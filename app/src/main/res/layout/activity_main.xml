@@ -9,13 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.paco.tipcalk.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:id="@+id/buttonSend"
-        android:onClick="sendMessage"
-        android:layout_weight="0.03" />
 
     <include
         android:layout_width="match_parent"
