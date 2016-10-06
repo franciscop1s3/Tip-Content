@@ -21,3 +21,13 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    minSdkVersion = 16
+    targetSdkVersion = 22
+    compileSdkVersion = 22
+    buildToolsVersion = "24.0.1"
+
+    supportLibraryVersion = '22.2.1'
+    butterknifeVersion = '7.0.1'
+}
