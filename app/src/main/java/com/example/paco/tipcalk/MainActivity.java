@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtTip;
 
     private final static int TIP_STEP_CHANGE = 1;
-    private final static int DEFAULT_TIP_CHANGE = 10; //CUESTIONES DE MANTENIBILIDAD
+    private final static int DEFAULT_TIP_PERCENTAGE = 10; //CUESTIONES DE MANTENIBILIDAD
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,14 +80,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleClickIncrease(){
         //cuando des click a + debe llamar a handleTipChange y sumar 1
+        hideKeyboard();
+        handleTipChange(TIP_STEP_CHANGE);
     }
 
     public void handleClickDecrease(){
         //Cuando des click a - debe llamar a handleTipChange y restar 1
+        hideKeyboard();
+        handleTipChange(-TIP_STEP_CHANGE);
     }
 
     //publ
     public int getTipPercentage() {
+        int tipPercentage = DEFAULT_TIP_PERCENTAGE;
+
         //
         //1.- Crear una variable tipPercentage en la que guardemos DEFAULT_TIP_CHANGE
         //2.- Crear una variable String strInputTipPercentage que tome el valor del inputPercentage
@@ -99,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleTipChange(int change) {
+        int tipPercentage = getTipPercentage();
+        tipPercentage += change;
+
         //1.- Llammar a get tip Percentage(en una variable)
         //2.- Aplicar el incremento/decremento que viene en change
         //4.- s tip percentage mayor que cero entonces colocar el valor en el input
