@@ -21,6 +21,8 @@ import com.example.paco.tipcalk.fragments.TipHistoryListFragmentListener;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.example.paco.tipcalk.R;
+import com.example.paco.tipcalk.TipCalcApp;
 
 public class MainActivity extends AppCompatActivity {
 
