@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.paco.tipcalk.fragments.TipHistoryListFragment;
+import com.example.paco.tipcalk.fragments.TipHistoryListFragmentListener;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.txtTip)
     TextView txtTip;
 
+    private TipHistoryListFragmentListener fragmentListener;
+
     private final static int TIP_STEP_CHANGE = 1;
     private final static int DEFAULT_TIP_PERCENTAGE = 10; //CUESTIONES DE MANTENIBILIDAD
 
@@ -43,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
+        TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentList);
+        fragment.setRetainInstance(true);
+        fragmentListener = (TipHistoryListFragmentListener) fragment;
     }
 
     @Override
@@ -73,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
             double tip =total * (tipPercentage/100d);
 
             String strTip = String.format(getString(R.string.global_message_tip, tip));
+
+            fragmentListener.action(strTip);
+
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
@@ -93,21 +106,25 @@ public class MainActivity extends AppCompatActivity {
     //publ
     public int getTipPercentage() {
         int tipPercentage = DEFAULT_TIP_PERCENTAGE;
+        String strInputTipPercentage = inputPercentage.getText().toString().trim();
 
-        //
-        //1.- Crear una variable tipPercentage en la que guardemos DEFAULT_TIP_CHANGE
-        //2.- Crear una variable String strInputTipPercentage que tome el valor del inputPercentage
-        //3.- Verificar que la cadena no venga vacia
-        //3a.- Si no viene Vacia sobre escribir tipPercentage con el valor de strInputPercentage
-        //3b.- inputPercentage.setText(String.valueOf(DEFAULT_TIP_PERCENTAGE));
-        //4.- Devolver el valor de tipPercentage
-        return DEFAULT_TIP_CHANGE;
+        if(!strInputTipPercentage.isEmpty()) {
+            tipPercentage = Integer.parseInt(strInputTipPercentage);
+        }
+        else {
+            inputPercentage.setText(String.valueOf(DEFAULT_TIP_PERCENTAGE));
+        }
+
+        return tipPercentage;
     }
 
     public void handleTipChange(int change) {
         int tipPercentage = getTipPercentage();
         tipPercentage += change;
 
+        if( tipPercentage > 0) {
+            inputPercentage.setText(String.valueOf(tipPercentage));
+        }
         //1.- Llammar a get tip Percentage(en una variable)
         //2.- Aplicar el incremento/decremento que viene en change
         //4.- s tip percentage mayor que cero entonces colocar el valor en el input
@@ -133,8 +150,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void sendMessage(View view) {
 
-        Log.v("MENSAJE DE LOG","NO DISTRAIGAN A SUS COMPAÑEROS!!!!!");
-    }
 }
