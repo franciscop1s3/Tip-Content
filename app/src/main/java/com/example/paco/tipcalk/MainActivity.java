@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.paco.tipcalk.R;
 import com.example.paco.tipcalk.TipCalcApp;
+import com.example.paco.tipcalk.models.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,23 +83,27 @@ public class MainActivity extends AppCompatActivity {
             double total = Double.parseDouble(strInputTotal);
             int tipPercentage = getTipPercentage();
 
-            double tip =total * (tipPercentage/100d);
+            TipRecord record = new TipRecord();
+            record.setBill(total);
+            record.setTipPercentage(tipPercentage);
+            record.setTimestamp(new Date());
 
-            String strTip = String.format(getString(R.string.global_message_tip, tip));
-
-            fragmentListener.action(strTip);
+            String strTip = String.format(getString(R.string.global_message_tip), record.getTip());
+            fragmentListener.addToList(record);
 
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
     }
 
+    @OnClick(R.id.btnIncrease)
     public void handleClickIncrease(){
         //cuando des click a + debe llamar a handleTipChange y sumar 1
         hideKeyboard();
         handleTipChange(TIP_STEP_CHANGE);
     }
 
+    @OnClick(R.id.btnDecrease)
     public void handleClickDecrease(){
         //Cuando des click a - debe llamar a handleTipChange y restar 1
         hideKeyboard();
@@ -114,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             tipPercentage = Integer.parseInt(strInputTipPercentage);
         }
         else {
+            tipPercentage = DEFAULT_TIP_CHANGE;
             inputPercentage.setText(String.valueOf(DEFAULT_TIP_PERCENTAGE));
         }
 
@@ -140,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
         } catch(NullPointerException npe) {
             Log.e(getLocalClassName(), Log.getStackTraceString(npe));
         }
+    }
+
+    @OnClick(R.id.btnClear)
+    public void handleClickClear(){
+        hideKeyboard();
+        fragmentListener.clearList();
     }
 
     private void about() {
