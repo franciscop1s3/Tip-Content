@@ -6,6 +6,6 @@ import com.example.paco.tipcalk.models.TipRecord;
  * Created by paco on 10/10/2016.
  */
 public interface TipHistoryListFragmentListener {
-    void addToLit(TipRecord record);
+    void addToList(TipRecord record);
     void clearList();
 }

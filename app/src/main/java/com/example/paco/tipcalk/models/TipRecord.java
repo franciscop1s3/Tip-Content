@@ -19,11 +19,11 @@ public class TipRecord {
         this.bill = bill;
     }
 
-    public int getTippercentage() {
+    public int getTipPercentage() {
         return tipPercentage;
     }
 
-    public void setTippercentage(int tippercentage) {
+    public void setTipPercentage(int tippercentage) {
         this.tipPercentage = tippercentage;
     }
 

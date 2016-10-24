@@ -25,6 +25,8 @@ import com.example.paco.tipcalk.R;
 import com.example.paco.tipcalk.TipCalcApp;
 import com.example.paco.tipcalk.models.TipRecord;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.inputBill)
