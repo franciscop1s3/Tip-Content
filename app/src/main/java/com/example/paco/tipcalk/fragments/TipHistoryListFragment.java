@@ -9,9 +9,12 @@ import android.util.log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.paco.tipcalk.R;
+import com.example.paco.tipcalk.activities.TipDetailActivity;
+import com.example.paco.tipcalk.adapters.OnItemClickListener;
 import com.example.paco.tipcalk.adapters.TipAdapter;
 import com.example.paco.tipcalk.models.TipRecord;
 
@@ -52,16 +55,15 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     private void initAdapter() {
         if(adapter == null) {
-            adapter = new TipAdapter(getActivity().getApplicationContext(), new ArrayList<>(TipRecord));
+            adapter = new TipAdapter(getActivity().getApplicationContext(), this));
         }
     }
 
 
     @Override
-    public void addToLit(TipRecord record) {
-        if(adapter==null) {
-            adapter = new TipAdapter(getActivity().getApplicationContext(), new ArrayList<TipRecord>());
-        }
+    public void addToList(TipRecord record) {
+        adapter.add(record);
+
 
     }
 
@@ -74,6 +76,10 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void OnItemClick(TipRecord tipRecord){
         //
-        Log.v("MENSAJE!!!!",tipRecord.getDateFormated())
+        Intent intent = new Intent(getActivity(), TipDetailActivity.class);
+        intent.putExtra(TipDetailActivity.TIP_KEY, tipRecord.getTip());
+        intent.putExtra(TipDetailActivity.BILL_TOTAL_KEY, tipRecord.getBill());
+        intent.putExtra(TipDetailActivity.DATE_KEY, tipRecord.getDateFormated());
+        startActivity(intent);
     }
 }
