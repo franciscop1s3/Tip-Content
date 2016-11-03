@@ -9,16 +9,11 @@ import android.util.log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.example.paco.tipcalk.R;
 import com.example.paco.tipcalk.activities.TipDetailActivity;
-import com.example.paco.tipcalk.adapters.OnItemClickListener;
 import com.example.paco.tipcalk.adapters.TipAdapter;
-import com.example.paco.tipcalk.models.TipRecord;
-
-import java.util.ArrayList;
+import com.example.paco.tipcalk.entity.TipRecord;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

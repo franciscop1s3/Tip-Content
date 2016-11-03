@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,8 +21,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.example.paco.tipcalk.R;
-import com.example.paco.tipcalk.TipCalcApp;
-import com.example.paco.tipcalk.models.TipRecord;
+import com.example.paco.tipcalk.entity.TipRecord;
 
 import java.util.Date;
 

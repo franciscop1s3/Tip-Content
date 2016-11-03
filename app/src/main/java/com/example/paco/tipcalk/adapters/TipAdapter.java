@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.paco.tipcalk.models.TipRecord;
+import com.example.paco.tipcalk.entity.TipRecord;
 
 import java.util.ArrayList;
 import java.util.List;
