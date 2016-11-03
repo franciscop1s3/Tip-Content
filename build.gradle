@@ -30,4 +30,5 @@ ext {
 
     supportLibraryVersion = '22.2.1'
     butterknifeVersion = '7.0.1'
+    dbflow_version = "4.0.0-beta1"
 }

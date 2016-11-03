@@ -28,5 +28,9 @@ dependencies {
     compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
 
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.ext.dbflow_version"
+    // use kapt for kotlin apt
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.ext.dbflow_version"
+    compile "com.github.Raizlabs.DBFlow:dbflow:$rootProject.ext.dbflow_version"
     compile 'com.android.support:support-v4:22.2.1'
 }
