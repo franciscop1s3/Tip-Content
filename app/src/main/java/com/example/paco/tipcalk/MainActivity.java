@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     private final static int DEFAULT_TIP_PERCENTAGE = 10; //CUESTIONES DE MANTENIBILIDAD
 
     @Override
+    protected void OnDestroy{
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

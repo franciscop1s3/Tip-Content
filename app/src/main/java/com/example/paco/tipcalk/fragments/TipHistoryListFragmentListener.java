@@ -9,3 +9,8 @@ public interface TipHistoryListFragmentListener {
     void addToList(TipRecord record);
     void clearList();
 }
+
+@Override
+public void addToList(TipRecord record) {
+
+}

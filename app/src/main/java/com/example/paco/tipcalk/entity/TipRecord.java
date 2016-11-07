@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by paco on 13/10/2016.
  */
 @Table(database = TipsDatabase.class)
-public class TipRecord {
+public class TipRecord extends BaseModel{
     @PrimaryKey(autoincrement = true)
     private int id;
 
