@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentListener = (TipHistoryListFragmentListener) fragment;
     }
 
+    private void initDB(){
+        FlowManager.init(new FlowConfig.Builder(this).build());
+
+        FlowManager.getDatabase(TipsDatabase.class).getWritableDatabase();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
