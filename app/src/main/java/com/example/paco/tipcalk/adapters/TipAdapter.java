@@ -60,6 +60,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
     public void add(TipRecord record){
         //dataset.add(0, record);
         record.save();
+        dataset= new Select().from(TipRecord.class).queryList();
         notifyDataSetChanged();
     }
 

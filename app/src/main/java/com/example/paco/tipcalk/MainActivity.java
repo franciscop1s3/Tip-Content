@@ -47,10 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private final static int TIP_STEP_CHANGE = 1;
     private final static int DEFAULT_TIP_PERCENTAGE = 10; //CUESTIONES DE MANTENIBILIDAD
 
-    @Override
-    protected void OnDestroy{
 
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
         TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentList);
         fragment.setRetainInstance(true);
         fragmentListener = (TipHistoryListFragmentListener) fragment;
+        
+        fragmentListener.initList();
+    }
+
+    @Override
+    protected void onDestroy{
+        super.onDestroy();
+        DbTearDown();
+    }
+
+    private void DbTearDown(){
+        FlowManager.destroy();
     }
 
     private void initDB(){
